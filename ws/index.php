@@ -46,7 +46,7 @@ class WsApp implements MessageComponentInterface {
         $di->set("modelsManager", ModelManager::class);
     }
 
-    public function onOpen(ConnectionInterface $conn) {}
+    public function onOpen(ConnectionInterface $obConnection) {}
 
     public function onMessage(ConnectionInterface $obConnection, $sMessage) {
         $arMessage = json_decode($sMessage, true);
@@ -92,11 +92,10 @@ class WsApp implements MessageComponentInterface {
         }
     }
 
-    public function onClose(ConnectionInterface $conn) {
-        // The connection is closed, remove it, as we can no longer send it messages
-        $this->clients->detach($conn);
+    public function onClose(ConnectionInterface $obConnection) {
+        unset($this->arClients[$obConnection->resourceId]);
 
-        echo "Connection {$conn->resourceId} has disconnected\n";
+        echo "Connection {$obConnection->resourceId} has disconnected\n";
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e) {
