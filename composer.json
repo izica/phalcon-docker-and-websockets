@@ -1,0 +1,11 @@
+{
+    "scripts": {
+        "phinx": "php vendor/robmorgan/phinx/bin/phinx"
+    },
+    "require": {
+        "robmorgan/phinx": "^0.10.6",
+        "izica/phalcon-validation": "^1.4",
+        "izica/php-collection": "^1.6",
+        "cboden/ratchet": "^0.4.1"
+    }
+}
