@@ -9,7 +9,7 @@ class CreateTableCorpse extends AbstractMigration
     public function up()
     {
         $this->table('corpse')
-            ->addColumn('character_id', 'string', ['limit' => 80])
+            ->addColumn('character_id', 'integer')
             ->addColumn('status', 'string', ['limit' => 80])
             ->addColumn('floor_id', 'string', ['limit' => 80])
             ->addColumn('x', 'string', ['limit' => 80])
